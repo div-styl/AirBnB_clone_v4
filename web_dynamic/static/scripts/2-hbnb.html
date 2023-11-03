@@ -1,0 +1,13 @@
+$(document).ready(initialize); const SERVER_HOST = '0.0.0.0'; function
+initialize() { const selectedAmenities = {}; $('.amenities .popover
+input').change(function () { if ($(this).is(':checked')) {
+selectedAmenities[$(this).attr('data-name')] = $(this).attr('data-id'); } else
+if ($(this).is(':not(:checked)')) { delete
+selectedAmenities[$(this).attr('data-name')]; } const amenityNames =
+Object.keys(selectedAmenities); $('.amenities
+h4').text(amenityNames.sort().join(', ')); }); checkApiStatus(); } function
+checkApiStatus() { const API_BASE_URL =
+`http://${SERVER_HOST}:5001/api/v1/status/`; $.get(API_BASE_URL, (data,
+textStatus) => { if (textStatus === 'success' && data.status === 'OK') {
+$('#api_status').addClass('available'); } else {
+$('#api_status').removeClass('available'); } }); }

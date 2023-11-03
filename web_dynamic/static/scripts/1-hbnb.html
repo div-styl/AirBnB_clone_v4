@@ -1,0 +1,7 @@
+$(document).ready(initialize); function initialize() { const selectedAmenities =
+{}; $('.amenities .popover input').change(function () { if
+($(this).is(':checked')) { selectedAmenities[$(this).attr('data-name')] =
+$(this).attr('data-id'); } else if ($(this).is(':not(:checked)')) { delete
+selectedAmenities[$(this).attr('data-name')]; } const selectedNames =
+Object.keys(selectedAmenities); $('.amenities
+h4').text(selectedNames.sort().join(', ')); }); }
